@@ -24,9 +24,27 @@ function mainMenu() {
                     return true;
                 }
                 return "Please enter a name"
+                // .includes
             }
-        }]).then(answer) {}
-    }
+        }]).then(answer => {
+            const manager = new Manager(answers.id);
+            teamMembers.push(manager);
+            idArray.push(answers.managerID);
+            nextTeamMember()
+
+    })
+}
+{
+    function nextTeamMember() {
+        inquirer.prompt([{
+            type: "list",
+            name: "memberChoice",
+            message: "Which team member would you like to add?",
+            choices: ["Engineer", "Intern", "I don't want anymore team members"]
+            .then 
+        }])
+}
+}
     createManager()
 }
 
