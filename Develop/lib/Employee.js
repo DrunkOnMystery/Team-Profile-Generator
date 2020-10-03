@@ -7,7 +7,7 @@ class Employee {
     }
 
 
-    genName() {
+    getName() {
         return this.name;
     }
 
@@ -23,5 +23,5 @@ class Employee {
         return "Employee"
     }
 }
-
+console.log(Employee);
 module.export = Employee;
