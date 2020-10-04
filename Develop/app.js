@@ -121,9 +121,33 @@ function mainMenu() {
                 }
                 return "Please enter a name"
                 // .includes
+            }},
+            {
+            type: "input",
+            name: "managerID",
+            message: "What is your manager's ID number?",
+            validate: answer => {
+                if(isNaN(answer))
+                    return "Please enter a number for your manager's ID."
             }
-        }]).then(answer => {
-            const manager = new Manager(answer.id);
+        },
+        {
+            type: "input",
+            name: "managerEmail",
+            message: "What is your manager's Email address?"
+        },
+        {
+            type: "input",
+            name: "managerOffice",
+            message: "What is your manager's office number?",
+            validate: answer => {
+                if(isNaN(answer))
+                return "Please enter a number for your manager's office."
+            }
+        },
+
+        ]).then(answer => {
+            const manager = new Manager(answer.managerName, answer.managerID, answer.managerEmail, answer.managerOffice);
             teamMembers.push(manager);
             idArray.push(answer.managerID);
             nextTeamMember();
