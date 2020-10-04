@@ -13,7 +13,10 @@ const render = require("./lib/htmlRenderer");
 const teamMembers = [];
 const idArray = [];
 
+
+
 function mainMenu() {
+
     function createManager() {
         console.log("Please build your team");
         inquirer.prompt([{
