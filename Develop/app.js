@@ -13,10 +13,99 @@ const render = require("./lib/htmlRenderer");
 const teamMembers = [];
 const idArray = [];
 
-console.log(Employee);
-console.log(Manager);
-console.log(Engineer);
-console.log(Intern);
+// class Employee {
+
+//     constructor(name, id, email) {
+//         this.name = name;
+//         this.id = id;
+//         this.email = email;
+//     }
+
+
+//     getName() {
+//         return this.name;
+//     }
+
+//     getId() {
+//         return this.id;
+//     }
+
+//     getEmail() {
+//         return this.email;
+//     }
+
+//     getRole() {
+//         return "Employee"
+//     }
+// }
+
+// class Manager extends Employee {
+//     constructor(name, id, email, officeNumber) {
+//         super(name, id, email);
+//         this.officeNumber = officeNumber;
+//     }
+
+//     getRole() {
+//         return "Manager";
+//     }
+
+//     getOfficeNumber() {
+//         return this.officeNumber;
+//     }
+
+// }
+
+// class Engineer extends Employee {
+//     constructor(name, id, email, github) {
+//         super(name, id, email);
+//         this.github = github;
+//     }
+
+//     getRole() {
+//         return "Engineer";
+//     }
+
+//     getGitHub() {
+//         return this.github;
+//     }
+
+// }
+
+// class Intern extends Employee {
+//     constructor(name, id, email, school) {
+//         super(name, id, email);
+//         this.school = school;
+//     }
+
+//     getRole() {
+//         return "Intern"
+//     }
+
+//     getSchool() {
+//         return this.school
+//     }
+
+// }
+
+
+
+
+
+
+
+// manager1 = new Manager("Ben", 100, "ben@fakeemail.com", "102");
+// console.log(manager1);
+
+// employee1 = new Employee("Bob", 101, "bob@fakeemail.com");
+// console.log(employee1);
+
+// intern1 = new Intern("Jeff", 103, "jeff@fakeemail.com", "NYU");
+// console.log(intern1);
+
+// engineer1 = new Engineer("Amanda", 102, "amanda@fakeemail.com", "amandanator");
+// console.log(engineer1);
+
+
 
 function mainMenu() {
 
@@ -34,10 +123,10 @@ function mainMenu() {
                 // .includes
             }
         }]).then(answer => {
-            const manager = new Manager(answers.id);
+            const manager = new Manager(answer.id);
             teamMembers.push(manager);
-            idArray.push(answers.managerID);
-            nextTeamMember()
+            idArray.push(answer.managerID);
+            nextTeamMember();
 
     })
 }
@@ -48,8 +137,8 @@ function mainMenu() {
             name: "memberChoice",
             message: "Which team member would you like to add?",
             choices: ["Engineer", "Intern", "I don't want anymore team members"]
-            .then 
         }])
+        .then
 }
 }
     createManager()
