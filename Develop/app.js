@@ -13,7 +13,10 @@ const render = require("./lib/htmlRenderer");
 const teamMembers = [];
 const idArray = [];
 
-
+console.log(Employee);
+console.log(Manager);
+console.log(Engineer);
+console.log(Intern);
 
 function mainMenu() {
 
