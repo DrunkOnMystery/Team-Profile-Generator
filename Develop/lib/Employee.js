@@ -24,7 +24,5 @@ class Employee {
         return "Employee"
     }
 }
-// var employee1 = new Employee("Bob", 10101, "bob@fakeemail.com");
-// console.log(employee1);
 
-module.export = Employee;
+module.exports = Employee;

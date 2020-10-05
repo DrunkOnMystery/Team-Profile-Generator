@@ -167,12 +167,11 @@ function mainMenu() {
                 name: "memberChoice",
                 message: "Which team member would you like to add?",
                 choices: ["Engineer", "Intern", "I don't want anymore team members"]
-            }])
-                .then(answer => {
-                    if (answer.this === "Engineer") {
+            }]) 
+                    if ("Engineer") {
                         createEngineer();
                     }
-                    if (answer.this === "Intern") {
+                    if ("Intern") {
                         createIntern();
                     }
                     else
@@ -180,11 +179,11 @@ function mainMenu() {
                         console.log(idArray);
                         console.log(teamMembers);
 
-                })
+                }
         }
-    }
+    
 
-    function createEngineer() {
+    async function createEngineer() {
         console.log("Please describe your engineer");
         inquirer.prompt([{
             type: "input",
@@ -224,10 +223,10 @@ function mainMenu() {
         idArray.push(answer.engineerID);
         nextTeamMember();
 
-    })
-}
+    })}
 
-        function createIntern() {
+
+       async function createIntern() {
             console.log("Please describe your intern");
             inquirer.prompt([{
 
