@@ -1,7 +1,7 @@
-// const Employee = require("./lib/Employee");
-// const Manager = require("./lib/Manager");
-// const Engineer = require("./lib/Engineer");
-// const Intern = require("./lib/Intern");
+const Employee = require("./lib/Employee");
+const Manager = require("./lib/Manager");
+const Engineer = require("./lib/Engineer");
+const Intern = require("./lib/Intern");
 const inquirer = require("inquirer");
 const path = require("path");
 const fs = require("fs");
@@ -13,79 +13,79 @@ const render = require("./lib/htmlRenderer");
 var teamMembers = [];
 var idArray = [];
 
-class Employee {
+// class Employee {
 
-    constructor(name, id, email) {
-        this.name = name;
-        this.id = id;
-        this.email = email;
-    }
+//     constructor(name, id, email) {
+//         this.name = name;
+//         this.id = id;
+//         this.email = email;
+//     }
 
 
-    getName() {
-        return this.name;
-    }
+//     getName() {
+//         return this.name;
+//     }
 
-    getId() {
-        return this.id;
-    }
+//     getId() {
+//         return this.id;
+//     }
 
-    getEmail() {
-        return this.email;
-    }
+//     getEmail() {
+//         return this.email;
+//     }
 
-    getRole() {
-        return "Employee"
-    }
-}
+//     getRole() {
+//         return "Employee"
+//     }
+// }
 
-class Manager extends Employee {
-    constructor(name, id, email, officeNumber) {
-        super(name, id, email);
-        this.officeNumber = officeNumber;
-    }
+// class Manager extends Employee {
+//     constructor(name, id, email, officeNumber) {
+//         super(name, id, email);
+//         this.officeNumber = officeNumber;
+//     }
 
-    getRole() {
-        return "Manager";
-    }
+//     getRole() {
+//         return "Manager";
+//     }
 
-    getOfficeNumber() {
-        return this.officeNumber;
-    }
+//     getOfficeNumber() {
+//         return this.officeNumber;
+//     }
 
-}
+// }
 
-class Engineer extends Employee {
-    constructor(name, id, email, github) {
-        super(name, id, email);
-        this.github = github;
-    }
+// class Engineer extends Employee {
+//     constructor(name, id, email, github) {
+//         super(name, id, email);
+//         this.github = github;
+//     }
 
-    getRole() {
-        return "Engineer";
-    }
+//     getRole() {
+//         return "Engineer";
+//     }
 
-    getGitHub() {
-        return this.github;
-    }
+//     getGitHub() {
+//         return this.github;
+//     }
 
-}
+// }
 
-class Intern extends Employee {
-    constructor(name, id, email, school) {
-        super(name, id, email);
-        this.school = school;
-    }
+// class Intern extends Employee {
+//     constructor(name, id, email, school) {
+//         super(name, id, email);
+//         this.school = school;
+//     }
 
-    getRole() {
-        return "Intern"
-    }
+//     getRole() {
+//         return "Intern"
+//     }
 
-    getSchool() {
-        return this.school
-    }
+//     getSchool() {
+//         return this.school
+//     }
 
-}
+// }
 
 
 
@@ -131,9 +131,10 @@ function mainMenu() {
             validate: async answer => {
                 if (isNaN(answer)) {
                     return "Please enter a number for your manager's ID.";
+                }
+                return true
             }
-            return true
-        }},
+        },
         {
             type: "input",
             name: "managerEmail",
@@ -146,9 +147,9 @@ function mainMenu() {
             validate: async answer => {
                 if (isNaN(answer)) {
                     return "Please enter a number for your manager's office.";
-            }
+                }
                 return true
-        }
+            }
 
         },
 
@@ -167,23 +168,26 @@ function mainMenu() {
                 name: "memberChoice",
                 message: "Which team member would you like to add?",
                 choices: ["Engineer", "Intern", "I don't want anymore team members"]
-            }]) 
-                    if ("Engineer") {
+            }])
+                .then(answer => {
+                    console.log(answer.memberChoice);
+                    if (answer.memberChoice === "Engineer") {
                         createEngineer();
                     }
-                    if ("Intern") {
+                    if (answer.memberChoice === "Intern") {
                         createIntern();
                     }
-                    else
+                    else {
                         console.log("Ok. We'll go ahead and finish up making your team!");
                         console.log(idArray);
                         console.log(teamMembers);
-
+                    }
                 }
+                )
         }
-    
+    }
 
-    async function createEngineer() {
+    function createEngineer() {
         console.log("Please describe your engineer");
         inquirer.prompt([{
             type: "input",
@@ -194,7 +198,6 @@ function mainMenu() {
                     return true;
                 }
                 return "Please enter a name"
-                // .includes
             }
         },
         {
@@ -204,9 +207,10 @@ function mainMenu() {
             validate: async answer => {
                 if (isNaN(answer)) {
                     return "Please enter a number for your engineer's ID.";
+                }
+                return true
             }
-            return true
-        }},
+        },
         {
             type: "input",
             name: "engineerEmail",
@@ -217,18 +221,19 @@ function mainMenu() {
             name: "engineerGithub",
             message: "What is your engineer's username on Github?"
         },
-    ]).then(answer => {
-        const engineer = new Engineer(answer.engineerName, answer.engineerID, answer.engineerEmail, answer.engineerGithub);
-        teamMembers.push(engineer);
-        idArray.push(answer.engineerID);
-        nextTeamMember();
+        ]).then(answer => {
+            const engineer = new Engineer(answer.engineerName, answer.engineerID, answer.engineerEmail, answer.engineerGithub);
+            teamMembers.push(engineer);
+            idArray.push(answer.engineerID);
+            nextTeamMember();
 
-    })}
+        })
+    }
 
 
-       async function createIntern() {
-            console.log("Please describe your intern");
-            inquirer.prompt([{
+    function createIntern() {
+        console.log("Please describe your intern");
+        inquirer.prompt([{
 
             type: "input",
             name: "internName",
@@ -241,10 +246,10 @@ function mainMenu() {
             validate: async answer => {
                 if (isNaN(answer)) {
                     return "Please enter a number for your intern's ID.";
+                }
+                return true
             }
-            return true
-        }
-    },
+        },
         {
             type: "input",
             name: "internEmail",
@@ -255,18 +260,18 @@ function mainMenu() {
             name: "internSchool",
             message: "What school does your intern attend?"
         }
-    ]).then(answer => {
-        const intern = new Intern(answer.internName, answer.internID, answer.internEmail, answer.internSchool);
-        teamMembers.push(intern);
-        idArray.push(answer.internID);
-        nextTeamMember();
+        ]).then(answer => {
+            const intern = new Intern(answer.internName, answer.internID, answer.internEmail, answer.internSchool);
+            teamMembers.push(intern);
+            idArray.push(answer.internID);
+            nextTeamMember();
 
-    })
+        })
     }
-        createManager()
+    createManager()
 }
 
-    mainMenu()
+mainMenu()
 
 
 // Write code to use inquirer to gather information about the development team members,
