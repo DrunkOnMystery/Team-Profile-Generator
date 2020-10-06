@@ -20,8 +20,6 @@ var idArray = [];
 
 //create primary function
 function mainMenu() {
-    idArray = [];
-    teamMembers = [];
 
     //create function for creating first team member, the manager, using inquirer prompts
     function createManager() {
@@ -51,7 +49,16 @@ function mainMenu() {
         {
             type: "input",
             name: "managerEmail",
-            message: "What is your manager's Email address?"
+            message: "What is your manager's Email address?",
+            validate: answer => {
+                const pass = answer.match(
+                  /\S+@\S+\.\S+/
+                );
+                if (pass) {
+                  return true;
+                }
+                return "Please enter a valid email address.";
+              }
         },
         {
             type: "input",
@@ -132,7 +139,16 @@ function mainMenu() {
         {
             type: "input",
             name: "engineerEmail",
-            message: "What is your engineer's Email address?"
+            message: "What is your engineer's Email address?",
+            validate: answer => {
+                const pass = answer.match(
+                  /\S+@\S+\.\S+/
+                );
+                if (pass) {
+                  return true;
+                }
+                return "Please enter a valid email address.";
+              }
         },
         {
             type: "input",
@@ -183,7 +199,16 @@ function mainMenu() {
         {
             type: "input",
             name: "internEmail",
-            message: "What is your intern's email address?"
+            message: "What is your intern's email address?",
+            validate: answer => {
+                const pass = answer.match(
+                  /\S+@\S+\.\S+/
+                );
+                if (pass) {
+                  return true;
+                }
+                return "Please enter a valid email address.";
+              }
         },
         {
             type: "input",
