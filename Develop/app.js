@@ -10,7 +10,7 @@ const render = require("./lib/htmlRenderer");
 
 const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
-// const renderFile = util.promisify(fs.writeFile);
+
 
 
 var teamMembers = [];
@@ -179,13 +179,17 @@ function mainMenu() {
     }
     {
         function renderTeam() {
-                render(outputPath, teamMembers);
+            try {    
+            fs.writeFile(outputPath, render(teamMembers));
           
             //console log notification to make 
                 console.log("Successfully wrote to output path");
               } 
+              catch(err) {
+                console.log(err);
+              }
             }
-
+        }
     
     createManager()
 }
