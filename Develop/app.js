@@ -104,7 +104,7 @@ function mainMenu() {
         }
     }
 
-    //show the function for creating an Engineer. Function ends by re-calling the nextTeamMember function
+    //show the function for creating an Engineer. Function ends by pushing the new object to the empty arrays, and then re-calling the nextTeamMember function
     function createEngineer() {
         console.log("Please describe your engineer");
         inquirer.prompt([{
@@ -154,7 +154,7 @@ function mainMenu() {
         })
     }
 
-        //show the function for creating an Intern. Function ends by re-calling the nextTeamMember function
+        //show the function for creating an Intern. Function ends by pushing the new object to the empty arrays, and then re-calling the nextTeamMember function
     function createIntern() {
         console.log("Please describe your intern");
         inquirer.prompt([{
