@@ -179,22 +179,21 @@ function mainMenu() {
     }
     {
         function renderTeam() {
-            try {    
-            fs.writeFile(outputPath, render(teamMembers));
-          
+            const renderedTeam = render(teamMembers)
+            fs.writeFile(outputPath, renderedTeam, function (err) {
+                if (err) return console.log(err)
+            });
+
             //console log notification to make 
-                console.log("Successfully wrote to output path");
-              } 
-              catch(err) {
-                console.log(err);
-              }
-            }
+            console.log("Successfully wrote to output path");
         }
-    
-    createManager()
+    }
+
+
+createManager();
 }
 
-mainMenu()
+mainMenu();
 
 
 // Write code to use inquirer to gather information about the development team members,
