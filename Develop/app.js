@@ -34,7 +34,7 @@ function mainMenu() {
                 if (answer !== "") {
                     return true;
                 }
-                return "Please enter a name"
+                return "Please enter a name."
             }
         },
         {
@@ -43,7 +43,7 @@ function mainMenu() {
             message: "What is your manager's ID number?",
             validate: async answer => {
                 if (isNaN(answer)) {
-                    return "Please enter a number for your manager's ID.";
+                    return "Please enter a number for your manager's ID number.";
                 }
                 return true
             }
@@ -115,7 +115,7 @@ function mainMenu() {
                 if (answer !== "") {
                     return true;
                 }
-                return "Please enter a name"
+                return "Please enter a name."
             }
         },
         {
@@ -137,7 +137,13 @@ function mainMenu() {
         {
             type: "input",
             name: "engineerGithub",
-            message: "What is your engineer's username on Github?"
+            message: "What is your engineer's username on Github?",
+            validate: answer => {
+                if (answer !== "") {
+                    return true;
+                }
+                return "Please enter a Github username."
+            }
         },
         ]).then(answer => {
             const engineer = new Engineer(answer.engineerName, answer.engineerID, answer.engineerEmail, answer.engineerGithub);
@@ -155,7 +161,13 @@ function mainMenu() {
 
             type: "input",
             name: "internName",
-            message: "What's your intern's name?"
+            message: "What's your intern's name?",
+            validate: answer => {
+                if (answer !== "") {
+                    return true;
+                }
+                return "Please enter a name."
+            }
         },
         {
             type: "input",
@@ -176,7 +188,13 @@ function mainMenu() {
         {
             type: "input",
             name: "internSchool",
-            message: "What school does your intern attend?"
+            message: "What school does your intern attend?",
+            validate: answer => {
+                if (answer !== "") {
+                    return true;
+                }
+                return "Please enter a school name."
+            }
         }
         ]).then(answer => {
             const intern = new Intern(answer.internName, answer.internID, answer.internEmail, answer.internSchool);

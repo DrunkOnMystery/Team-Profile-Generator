@@ -1,6 +1,7 @@
-
+//bring in file for Employee class
 const Employee = require("./Employee");
 
+//create Intern class by extending Employee class
 class Intern extends Employee {
     constructor(name, id, email, school) {
         super(name, id, email);
@@ -17,4 +18,5 @@ class Intern extends Employee {
 
 }
 
+//Export the file
 module.exports = Intern;
