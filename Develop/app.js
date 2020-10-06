@@ -5,11 +5,14 @@ const Intern = require("./lib/Intern");
 const inquirer = require("inquirer");
 const path = require("path");
 const fs = require("fs");
+const render = require("./lib/htmlRenderer");
+// const renderTeamMembers = render.promisify(fs.writeFile);
 
 const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
+// const renderFile = util.promisify(fs.writeFile);
 
-const render = require("./lib/htmlRenderer");
+
 var teamMembers = [];
 var idArray = [];
 
@@ -87,6 +90,7 @@ function mainMenu() {
                         console.log("Ok. We'll go ahead and finish up making your team!");
                         console.log(idArray);
                         console.log(teamMembers);
+                        renderTeam();
                     }
                 }
                 )
@@ -173,6 +177,16 @@ function mainMenu() {
 
         })
     }
+    {
+        function renderTeam() {
+                render(outputPath, teamMembers);
+          
+            //console log notification to make 
+                console.log("Successfully wrote to output path");
+              } 
+            }
+
+    
     createManager()
 }
 
