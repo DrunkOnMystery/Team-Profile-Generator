@@ -1,0 +1,44 @@
+h1 {
+    font-size: 40px;
+}
+
+h3 {
+    font-size: 15px;
+}
+
+.team-heading {
+    background-color: #448D76;
+    color: #341509;
+}
+
+.card-header {
+    text-align: center;
+    background-color: #D4F7EC;
+    color: #FD4D0C;
+}
+
+.container {
+    background-color: #FD4D0C;
+    max-width: 80%;
+    overflow: wrap;
+}
+
+.row {
+    width: 100%;
+}
+
+.card-body {
+    background-color: #448D76;
+    overflow: auto;
+}
+
+.card {
+    margin-right:30px;
+    margin-left: 30px;
+    width: 25%;
+}
+
+.list-group-item {
+    background-color: #D4F7EC;
+    color: #341509;
+}
